@@ -1,1 +1,17 @@
-
+server:
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - argocd.fluffytoast.com.au
+    paths:
+      - /
+    tls:
+      - hosts:
+          - argocd.fluffytoast.com.au
+        secretName: argocd-tls
+configs:
+  params:
+    server.insecure: true
